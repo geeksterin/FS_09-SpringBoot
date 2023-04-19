@@ -29,4 +29,35 @@ public class TodoDao {
         todoList.add(todo);//mock Database call
         return true;
     }
+
+    public boolean remove(Todo todo)
+    {
+        todoList.remove(todo);//mock a database
+        return true;
+    }
+
+    public boolean update(String id, boolean status)
+    {
+        boolean updateStatus = false;
+        for(Todo todo : todoList)
+        {
+            if(todo.getId().equals(id))
+            {
+                //my simple update logic
+                //remove original :
+                remove(todo);
+
+                //change this todo now
+                todo.setTodoStatus(status);
+
+                //add this new todo :
+                save(todo);
+
+                return true;//not mocking the database here to keep things simple.
+
+            }
+
+        }
+        return false;
+    }
 }
