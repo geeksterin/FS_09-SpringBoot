@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Validated
 @RestController
+@RequestMapping(value="/todoPackage")
 public class TodoController {
 
     @Autowired

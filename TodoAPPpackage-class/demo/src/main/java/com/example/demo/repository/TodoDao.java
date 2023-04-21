@@ -53,6 +53,8 @@ public class TodoDao {
                 //add this new todo :
                 save(todo);
 
+                //todo.setTodoStatus(status);
+
                 return true;//not mocking the database here to keep things simple.
 
             }
@@ -61,3 +63,9 @@ public class TodoDao {
         return false;
     }
 }
+
+// 0001 0002 0003 0004
+
+//for(var i : list) // iterable by reference
+
+
