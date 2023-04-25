@@ -1,0 +1,94 @@
+CREATE DATABASE musicLABEL;
+
+## SEE WHICH DATABASE IS BEING USED RIGHT NOW 
+SELECT database();
+
+
+USE musicLABEL;
+
+##INSIDE DB : musicLABEL
+
+## CREATE TABLES :
+
+##PARENT TABLE IS bands
+
+CREATE TABLE bands
+(
+	bandId INT NOT NULL AUTO_INCREMENT,
+    bandName VARCHAR(255) NOT NULL,
+    PRIMARY KEY (bandId)
+);
+
+##CHILD TABLE:
+
+CREATE TABLE albums 
+(
+	albumId INT NOT NULL AUTO_INCREMENT,
+    albumName VARCHAR(255) NOT NULL,
+    albumGenre VARCHAR(255),
+    albumYear INT,
+    album_bandId INT NOT NULL,
+	PRIMARY KEY (albumId),
+    FOREIGN KEY (album_bandId) references bands(bandId)
+);
+
+##INSERT :
+
+INSERT INTO bands (bandName)
+VALUES ('LOCAL TRAIN');
+
+INSERT INTO bands (bandName)
+VALUES ('ACDC');
+
+
+
+
+
+
+
+
+SELECT *
+FROM bands;
+
+DELETE FROM bands
+WHERE bandName = 'LOCAL TRAIN';
+
+##truncate and see behavior of id
+
+##INSERT IN albums
+
+INSERT INTO albums (albumName,albumGenre,albumYear,album_bandId)
+VALUES ('song3','Romance','2022','3'),
+	   ('song4','Romance','2001','3');
+
+
+SELECT *
+FROM albums;
+
+Delete from bands
+where bandid = 6;
+
+--
+
+
+
+
+##INNER JOIN :
+
+SELECT *
+FROM bands
+left join 
+albums
+on
+bands.bandId = albums.album_bandId
+where albumId <> null
+
+
+
+
+
+
+
+
+
+ 
