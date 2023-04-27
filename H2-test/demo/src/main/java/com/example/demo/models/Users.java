@@ -28,5 +28,6 @@ public class Users {
     private Integer age;
 
     @Column(name = "date_of_birth")
-    private LocalDate dob;
+    private LocalDate dateOfBirth;
 }
+

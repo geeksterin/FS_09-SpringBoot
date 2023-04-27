@@ -22,6 +22,50 @@ public class UserController {
        return userService.getAllUsers();
     }
 
+    //get by name
+
+    @GetMapping(value = "users/{name}")
+    public List<Users> getUsersByName(@PathVariable String name)
+    {
+        return userService.fetchUserBYName(name);
+    }
+
+    //get age greater than
+    @GetMapping(value = "users/age/{age}")
+    public List<Users> getUsersByAgeFactor(@PathVariable String age)
+    {
+        return userService.fetchUserByAgeFactor(age);
+    }
+
+    //name something or get age greater than something
+    @GetMapping(value = "users/{name}/greaterThan/{age}")
+    public List<Users> getUsersByNameOrAgeAbove(@PathVariable String name,@PathVariable String age)
+    {
+        return userService.getUsersByNameOrAgeAbove(name,age);
+    }
+
+    //name something and get age greater than something
+    @GetMapping(value = "users/ageGreater/combined")
+    public List<Users> getUsersByNameAndAgeAbove(@RequestParam String name,@RequestParam String age)
+    {
+        return userService.getUsersByNameAndAgeAbove(name,age);
+    }
+
+    //custom query :
+
+    @GetMapping(value = "/userSort")
+    public List<Users> getOrderedUsers()
+    {
+        return userService.getAllUsersSorted();
+    }
+
+    @GetMapping(value = "/userWhere/{age}")
+    public List<Users> getUserWhereAge(@PathVariable String age)
+    {
+        return userService.getAllUsersWhere(age);
+    }
+
+
     //post
     @PostMapping(value = "/users")
     public String insertUsers(@RequestBody List<Users> userList)
@@ -35,6 +79,8 @@ public class UserController {
     {
          userService.removeUserById(id);
     }
+
+
 
 
 }
