@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.models.Stock;
+import com.example.demo.models.StockType;
 import com.example.demo.repositories.IStockRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,9 @@ public class StockService {
     IStockRepository stockRepo;
 
     //custom finder
-    public List<Stock> getStocksByType(String stockType) {
+    public List<Stock> getStocksByType(StockType stockType) {
 
-        return stockRepo.findByStockType(stockType);
+        return stockRepo.findBy();
     }
 
     //implicit methods in crudRepo
@@ -53,5 +54,24 @@ public class StockService {
     @Transactional
     public void deleteStocksBasedOnCount(Integer count) {
         stockRepo.deleteStocksBasedOnCount(count);
+    }
+
+
+
+    @Transactional
+    public void updateTypeById(StockType stockType, Integer id) {
+
+        //int value = stockType.ordinal();
+        String enumValue = stockType.name();
+        stockRepo.modifyStockTypeById(enumValue, id);
+
+        throw new IllegalStateException("Mainak testing transactional ");
+
+    }
+
+    @Transactional
+    public void updateStockById(Integer id, Stock myStock) {
+
+        stockRepo.updateStockById(id,myStock.getStockId(),myStock.getStockName(),myStock.getStockPrice(),myStock.getStockBirthTimeStamp());
     }
 }

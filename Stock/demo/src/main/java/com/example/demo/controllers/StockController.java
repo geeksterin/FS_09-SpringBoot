@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 
 import com.example.demo.models.Stock;
+import com.example.demo.models.StockType;
 import com.example.demo.services.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class StockController {
 
     //get stocks by type
     @GetMapping(value = "/type/{stockType}")
-    public List<Stock> getStocksBasedOnType(@PathVariable String stockType)
+    public List<Stock> getStocksBasedOnType(@PathVariable StockType stockType)
     {
         return stockService.getStocksByType(stockType);
     }
@@ -51,12 +52,29 @@ public class StockController {
          stockService.updateMarketCap(marketCap,id);
     }
 
-    //put
+    //PUT USING CUSTOM QUERY :
+    @PutMapping(value = "/stock/type/id")
+    public void updateTypeById(@RequestParam StockType stockType, @RequestParam Integer id)
+    {
+        stockService.updateTypeById(stockType,id);
+    }
+
+    //put using Cq : stock, id
+    @PutMapping(value = "/stock/{id}")
+    public void updateStockById(@PathVariable Integer id, @RequestBody Stock myStock)
+    {
+        stockService.updateStockById(id,myStock);
+    }
+
+    //DELETE
     @DeleteMapping(value = "/ownerCount/{count}")
     public void removeStocksByOwnerCount(@PathVariable  Integer count)
     {
         stockService.deleteStocksBasedOnCount(count);
     }
+
+
+
 
 
 }

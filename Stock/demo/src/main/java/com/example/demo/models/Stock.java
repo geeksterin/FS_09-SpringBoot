@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 
 @Data
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table
 public class Stock {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,7 +28,8 @@ public class Stock {
 
     private Integer stockOwnerCount;
 
-    private String stockType;
+    @Enumerated(EnumType.STRING)//only for watching strings in DB.
+    private StockType stockType;//CAN ONLY BE 0,1,2
 
     private Double stockMarketCap;
 
