@@ -20,7 +20,9 @@ public class Address {
     private String city;
     private String houseNumber;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "userAddress")
+    //@OneToOne(cascade = CascadeType.ALL)
+    //@ManyToOne(cascade = CascadeType.ALL)
+    //@JoinColumn(name = "")
     private User user;
 
 }

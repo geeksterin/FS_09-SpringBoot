@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.engine.internal.Cascade;
 
+import java.util.List;
+
 
 @Data
 @AllArgsConstructor
@@ -21,8 +23,9 @@ public class User {
     private String userName;
     private Integer age;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_user-addressTable-addId")
-    private Address userAddress;
+    //@OneToOne(mappedBy = "user")
+    // @JoinColumn(name = "fk_user-addressTable-addId", referencedColumnName = "addressId")
+    //@OneToMany(cascade = CascadeType.ALL , mappedBy = "user")
+    private List<Address> userAddress;
 
 }
