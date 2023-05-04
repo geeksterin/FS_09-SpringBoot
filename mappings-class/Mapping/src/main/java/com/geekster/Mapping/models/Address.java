@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,8 +23,9 @@ public class Address {
     private String houseNumber;
 
     //@OneToOne(cascade = CascadeType.ALL)
-    //@ManyToOne(cascade = CascadeType.ALL)
+    //@ManyToMany(cascade = CascadeType.ALL)
     //@JoinColumn(name = "")
-    private User user;
+    //@ManyToOne(cascade = CascadeType.ALL)
+    private List<User> user;
 
 }

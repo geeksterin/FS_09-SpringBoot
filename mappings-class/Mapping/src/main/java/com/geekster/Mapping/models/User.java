@@ -26,6 +26,7 @@ public class User {
     //@OneToOne(mappedBy = "user")
     // @JoinColumn(name = "fk_user-addressTable-addId", referencedColumnName = "addressId")
     //@OneToMany(cascade = CascadeType.ALL , mappedBy = "user")
+    //@ManyToMany(cascade = CascadeType.ALL ,mappedBy = "user")
     private List<Address> userAddress;
 
 }
