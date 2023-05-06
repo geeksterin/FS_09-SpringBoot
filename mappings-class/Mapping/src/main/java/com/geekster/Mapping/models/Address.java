@@ -1,6 +1,10 @@
 package com.geekster.Mapping.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "addressId")
 public class Address {
 
 
@@ -22,10 +27,16 @@ public class Address {
     private String city;
     private String houseNumber;
 
-    //@OneToOne(cascade = CascadeType.ALL)
+
     //@ManyToMany(cascade = CascadeType.ALL)
     //@JoinColumn(name = "")
     //@ManyToOne(cascade = CascadeType.ALL)
-    private List<User> user;
+    //private List<User> user;
+
+    //@JsonIgnore
+    //@JsonManagedReference
+    @OneToOne(cascade = CascadeType.ALL)
+    //@OneToMany(cascade = CascadeType.ALL)
+    private User user;
 
 }

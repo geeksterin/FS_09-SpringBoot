@@ -1,5 +1,8 @@
 package com.geekster.Mapping.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "userId")
 public class User {
 
 
@@ -23,10 +27,13 @@ public class User {
     private String userName;
     private Integer age;
 
-    //@OneToOne(mappedBy = "user")
+
+    //@JsonBackReference
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
     // @JoinColumn(name = "fk_user-addressTable-addId", referencedColumnName = "addressId")
     //@OneToMany(cascade = CascadeType.ALL , mappedBy = "user")
     //@ManyToMany(cascade = CascadeType.ALL ,mappedBy = "user")
-    private List<Address> userAddress;
+    //private List<Address> userAddress;
+    Address userAddress;
 
 }

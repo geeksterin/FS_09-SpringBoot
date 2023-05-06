@@ -30,7 +30,7 @@ public class Course {
 
     //@OneToOne(cascade = CascadeType.ALL)
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_course_course_id")
     private List<Student> student;
 }

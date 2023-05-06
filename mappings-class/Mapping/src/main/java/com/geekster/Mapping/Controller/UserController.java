@@ -5,12 +5,11 @@ import com.geekster.Mapping.models.Address;
 import com.geekster.Mapping.models.User;
 import com.geekster.Mapping.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserController {
@@ -19,7 +18,7 @@ public class UserController {
     IUserRepository userRepository;
 
 
-    @PostMapping(value = "/user")
+    @PostMapping(value = "/users")
     void saveUser(@RequestBody User user)
     {
 
@@ -39,6 +38,25 @@ public class UserController {
             address.setUser(List.of(user));
         }*/
 
+        userRepository.save(user);
+    }
+
+/*    @GetMapping(value = "/user/{id}")
+    List<User> getUserByAddId(@PathVariable Long id)
+    {
+        return userRepository.getUserByAddress(id);
+    }*/
+
+    @GetMapping(value = "/user/{id}")
+    Optional<User> getUserById(@PathVariable Long id)
+    {
+        return userRepository.findById(id);
+    }
+
+    @PostMapping(value = "/user")
+    void addUser(@RequestBody User user)
+    {
+        user.getUserAddress().setUser(user);//same problem posting from reference table
         userRepository.save(user);
     }
 }

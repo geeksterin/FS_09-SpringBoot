@@ -5,9 +5,10 @@ import com.geekster.Mapping.models.Address;
 import com.geekster.Mapping.models.User;
 import com.geekster.Mapping.repository.IAddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class AddressController {
@@ -20,4 +21,13 @@ public class AddressController {
     {
         iAddressRepository.save(address);
     }
+
+
+    @GetMapping(value = "/address/{id}")
+    Optional<Address> getAddressById(@PathVariable Long id)
+    {
+        return iAddressRepository.findById(id);
+    }
+
+
 }
