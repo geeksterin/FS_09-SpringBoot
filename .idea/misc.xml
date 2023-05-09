@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Stock/demo/pom.xml" />
+        <option value="$PROJECT_DIR$/H2-test/demo/pom.xml" />
+        <option value="$PROJECT_DIR$/ecommerce/pom.xml" />
+        <option value="$PROJECT_DIR$/MVC basics/pom.xml" />
+        <option value="$PROJECT_DIR$/Annotations/demo/pom.xml" />
+        <option value="$PROJECT_DIR$/Ecommerce-App/ecommerce/pom.xml" />
+        <option value="$PROJECT_DIR$/mappings-class/Mapping/pom.xml" />
+        <option value="$PROJECT_DIR$/UserManagement/pom.xml" />
+        <option value="$PROJECT_DIR$/MailSendproject/SendMailJava/pom.xml" />
+        <option value="$PROJECT_DIR$/Saturday-Revise/demo/pom.xml" />
+        <option value="$PROJECT_DIR$/Student-courses/student-course/pom.xml" />
+        <option value="$PROJECT_DIR$/TodoAPPpackage-class/demo/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="17" project-jdk-type="JavaSDK" />
+</project>

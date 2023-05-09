@@ -3,11 +3,13 @@ package com.geekster.ecommerce.controller;
 import com.geekster.ecommerce.model.Product;
 import com.geekster.ecommerce.model.User;
 import com.geekster.ecommerce.repository.IProductRepo;
+import com.geekster.ecommerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -15,11 +17,35 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
 
     @Autowired
-    IProductRepo iProductRepo;
+    ProductService productService;
 
     @PostMapping()
     void addUser(@RequestBody Product myProduct)
     {
-        iProductRepo.save(myProduct);
+        productService.save(myProduct);
+    }
+
+    @GetMapping("/category/{category}")
+    List<Product> getProductsByCategoryName(@PathVariable String category)
+    {
+        return productService.findByProductCategory(category);
+    }
+
+    @DeleteMapping("/{productId}")
+    ResponseEntity<Void> removeProductById(@PathVariable int productId)
+    {
+
+        HttpStatus status;
+        try {
+            productService.removeProductById(productId);
+            status = HttpStatus.OK;
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+            status = HttpStatus.NOT_ACCEPTABLE;
+        }
+
+        return new ResponseEntity<Void>(status);
     }
 }

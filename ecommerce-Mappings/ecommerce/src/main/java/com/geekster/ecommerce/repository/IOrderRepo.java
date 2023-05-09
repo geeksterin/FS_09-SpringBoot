@@ -5,4 +5,7 @@ import com.geekster.ecommerce.model.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IOrderRepo extends JpaRepository<Order,Long> {
+
+
+    Order findByOrderId(Long orderId);
 }

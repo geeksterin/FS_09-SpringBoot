@@ -1,25 +1,38 @@
 package com.geekster.ecommerce.controller;
 
 
+import com.geekster.ecommerce.model.Address;
 import com.geekster.ecommerce.model.Order;
 import com.geekster.ecommerce.model.User;
 import com.geekster.ecommerce.repository.IUserRepo;
+import com.geekster.ecommerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
     @Autowired
-    IUserRepo iUserRepo;
+    UserService userService;
 
     @PostMapping()
     void addUser(@RequestBody User myUser)
     {
-        iUserRepo.save(myUser);
+
+        List<Address> Addresses = myUser.getUserAddresses();
+        for (Address add : Addresses)
+        {
+            add.setUser(myUser);
+        }
+        userService.save(myUser);
+    }
+
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable Long id)
+    {
+        return userService.getUserById(id);
     }
 }

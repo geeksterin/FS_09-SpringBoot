@@ -37,14 +37,24 @@ public class OrderService {
         Long userId = myOrder.getOrderUser().getUserId();
         User myUser = iUserRepo.findByUserId(userId);
 
-
-        myOrder.setOrderAddress(myAddress);
-        myOrder.setOrderProduct(myProduct);
-        myOrder.setOrderUser(myUser);
-
-
-        iOrderRepo.save(myOrder);
+        if(myAddress !=null && myProduct!= null && myUser != null) {
+            myOrder.setOrderAddress(myAddress);
+            myOrder.setOrderProduct(myProduct);
+            myOrder.setOrderUser(myUser);
 
 
+            iOrderRepo.save(myOrder);
+        }
+        else
+        {
+            throw new IllegalStateException("Id's sent for  creating order are not valid");
+        }
+
+
+    }
+
+    public Order fetchOrder(Long orderId) {
+
+        return iOrderRepo.findByOrderId(orderId);
     }
 }

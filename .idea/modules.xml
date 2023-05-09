@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mappings-class/Mapping/Mapping.iml" filepath="$PROJECT_DIR$/mappings-class/Mapping/Mapping.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Student-courses/student-course/Mapping (1).iml" filepath="$PROJECT_DIR$/Student-courses/student-course/Mapping (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/MailSendproject/SendMailJava/SendMailJava.iml" filepath="$PROJECT_DIR$/MailSendproject/SendMailJava/SendMailJava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UserManagement/UserManagement.iml" filepath="$PROJECT_DIR$/UserManagement/UserManagement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stock/demo/demo.iml" filepath="$PROJECT_DIR$/Stock/demo/demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/H2-test/demo/demo (1).iml" filepath="$PROJECT_DIR$/H2-test/demo/demo (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/MVC basics/demo (2).iml" filepath="$PROJECT_DIR$/MVC basics/demo (2).iml" />
+      <module fileurl="file://$PROJECT_DIR$/Annotations/demo/demo (3).iml" filepath="$PROJECT_DIR$/Annotations/demo/demo (3).iml" />
+      <module fileurl="file://$PROJECT_DIR$/Saturday-Revise/demo/demo (4).iml" filepath="$PROJECT_DIR$/Saturday-Revise/demo/demo (4).iml" />
+      <module fileurl="file://$PROJECT_DIR$/TodoAPPpackage-class/demo/demo (5).iml" filepath="$PROJECT_DIR$/TodoAPPpackage-class/demo/demo (5).iml" />
+      <module fileurl="file://$PROJECT_DIR$/ecommerce/ecommerce.iml" filepath="$PROJECT_DIR$/ecommerce/ecommerce.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ecommerce-App/ecommerce/ecommerce (1).iml" filepath="$PROJECT_DIR$/Ecommerce-App/ecommerce/ecommerce (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/transfer-projects.iml" filepath="$PROJECT_DIR$/.idea/transfer-projects.iml" />
+    </modules>
+  </component>
+</project>
