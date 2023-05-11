@@ -8,4 +8,6 @@ public interface ITokenRepo extends JpaRepository<AuthenticationToken, Long> {
 
 
     AuthenticationToken findByPatient(Patient patient);
+
+    AuthenticationToken findFirstByToken(String token);
 }

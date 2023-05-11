@@ -23,4 +23,12 @@ public class AuthenticationService {
        return  iTokenRepo.findByPatient(patient);
 
     }
+
+    public boolean authenticate(String userEmail, String token) {
+
+         AuthenticationToken authToken = iTokenRepo.findFirstByToken(token);
+         String expectedEmail = authToken.getPatient().getPatientEmail();
+         return expectedEmail.equals(userEmail);
+
+    }
 }

@@ -32,4 +32,7 @@ public class Patient {
         this.patientPassword = patientPassword;
         this.patientContact = patientContact;
     }
+
+    @OneToOne()
+    private Appointment appointments;
 }

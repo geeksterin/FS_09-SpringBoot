@@ -6,14 +6,17 @@ import com.geekster.doctorApp.dto.SignInOutput;
 import com.geekster.doctorApp.dto.SignUpInput;
 import com.geekster.doctorApp.dto.SignUpOutput;
 import com.geekster.doctorApp.model.AuthenticationToken;
+import com.geekster.doctorApp.model.Doctor;
 import com.geekster.doctorApp.model.Patient;
 import com.geekster.doctorApp.repository.IPatientRepo;
 import jakarta.xml.bind.DatatypeConverter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 @Service
 public class PatientService {
@@ -25,8 +28,8 @@ public class PatientService {
     @Autowired
     AuthenticationService tokenService;
 
-
-
+    @Autowired
+    DoctorService doctorService;
 
     public SignUpOutput signUp(SignUpInput signUpDto) {
 
@@ -120,7 +123,9 @@ public class PatientService {
         return new SignInOutput("Authentication Successfull !!!",authToken.getToken());
 
 
+    }
 
-
+    public List<Doctor> getAllDoctors() {
+        return doctorService.getAllDoctors();
     }
 }
