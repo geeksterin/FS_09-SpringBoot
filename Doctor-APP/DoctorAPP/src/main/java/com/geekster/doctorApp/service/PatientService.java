@@ -5,6 +5,7 @@ import com.geekster.doctorApp.dto.SignInInput;
 import com.geekster.doctorApp.dto.SignInOutput;
 import com.geekster.doctorApp.dto.SignUpInput;
 import com.geekster.doctorApp.dto.SignUpOutput;
+import com.geekster.doctorApp.model.AppointmentKey;
 import com.geekster.doctorApp.model.AuthenticationToken;
 import com.geekster.doctorApp.model.Doctor;
 import com.geekster.doctorApp.model.Patient;
@@ -27,6 +28,9 @@ public class PatientService {
 
     @Autowired
     AuthenticationService tokenService;
+
+    @Autowired
+    AppointmentService appointmentService;
 
     @Autowired
     DoctorService doctorService;
@@ -127,5 +131,11 @@ public class PatientService {
 
     public List<Doctor> getAllDoctors() {
         return doctorService.getAllDoctors();
+    }
+
+    public void cancelAppointment(AppointmentKey key) {
+
+        appointmentService.cancelAppointment(key);
+
     }
 }

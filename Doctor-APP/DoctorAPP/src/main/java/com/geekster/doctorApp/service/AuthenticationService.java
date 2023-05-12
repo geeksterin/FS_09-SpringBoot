@@ -26,7 +26,7 @@ public class AuthenticationService {
 
     public boolean authenticate(String userEmail, String token) {
 
-         AuthenticationToken authToken = iTokenRepo.findFirstByToken(token);
+         AuthenticationToken authToken = iTokenRepo.findFirstByToken(token);//find token object via token string
          String expectedEmail = authToken.getPatient().getPatientEmail();
          return expectedEmail.equals(userEmail);
 

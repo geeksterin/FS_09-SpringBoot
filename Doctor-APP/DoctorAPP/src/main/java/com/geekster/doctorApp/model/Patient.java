@@ -33,6 +33,6 @@ public class Patient {
         this.patientContact = patientContact;
     }
 
-    @OneToOne()
+    @OneToOne(mappedBy = "patient")
     private Appointment appointments;
 }

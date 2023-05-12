@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 @Embeddable
 public class AppointmentKey implements Serializable {//serializable - bytes
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long appointmentId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long appId;
     public LocalDateTime time;
 
 }
