@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface IPostRepo extends JpaRepository<Post, Integer> {
     List<Post> findByUser(User user);
+
 }

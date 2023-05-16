@@ -1,5 +1,7 @@
 package com.geekster.InstagramProject.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -48,6 +50,7 @@ public class User {
     @Pattern(regexp = "\\d{2}-\\d{10}", message = "Phone number should be in the format XX-XXXXXXXXXX")
     private String phoneNumber;
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
      private boolean isBlueTicked;// this should not be exposed to user : Hint : DTO
 
 

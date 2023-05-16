@@ -7,25 +7,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class InstagramComment {
-
+public class InstagramFollowing {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long commentId;
+    private Long followingTableId;
 
-    private String commentBody;
-
-    @ManyToOne
-    @JoinColumn(nullable = false , name = "fk_post_ID")
-    private Post post;
-
-    @ManyToOne
-    @JoinColumn(nullable = false , name = "fk_user_ID")
+    @OneToOne
     private User user;
 
-
+    @OneToOne
+    private User following;
 }

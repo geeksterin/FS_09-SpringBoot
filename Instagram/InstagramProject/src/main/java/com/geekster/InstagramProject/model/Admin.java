@@ -32,6 +32,6 @@ public class Admin {
     @Column(unique = true , nullable = false)
     @Email
     @NotBlank
-    private String email;
+    private String email;//add regex for @admin.inta.com
 
 }

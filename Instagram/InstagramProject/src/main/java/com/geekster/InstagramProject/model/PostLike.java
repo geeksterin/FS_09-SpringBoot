@@ -7,17 +7,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class InstagramComment {
+public class PostLike {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long commentId;
+    private Long likeId;
 
-    private String commentBody;
 
     @ManyToOne
     @JoinColumn(nullable = false , name = "fk_post_ID")
@@ -26,6 +25,4 @@ public class InstagramComment {
     @ManyToOne
     @JoinColumn(nullable = false , name = "fk_user_ID")
     private User user;
-
-
 }

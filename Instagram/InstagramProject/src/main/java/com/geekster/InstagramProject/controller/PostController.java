@@ -1,6 +1,7 @@
 package com.geekster.InstagramProject.controller;
 
 import com.geekster.InstagramProject.model.Post;
+import com.geekster.InstagramProject.model.User;
 import com.geekster.InstagramProject.service.PostService;
 import com.geekster.InstagramProject.service.TokenService;
 import jakarta.validation.Valid;
@@ -29,6 +30,8 @@ public class PostController {
         String msg = "";
         if(authService.authenticate(email,token))
         {
+            User user =  authService.findUserByToken(token);
+            post.setUser(user);
             postService.addPost(post);
             msg = " Post posted successfully";
             status = HttpStatus.OK;
@@ -58,5 +61,11 @@ public class PostController {
         }
 
         return new ResponseEntity<List<Post>>(postList , status);
+    }
+
+    @GetMapping("/{postId}/likeCount")
+    long getLikesForPost(@PathVariable Long postId)
+    {
+        return postService.getLikes(postId);
     }
 }

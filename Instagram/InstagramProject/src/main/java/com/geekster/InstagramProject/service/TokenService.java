@@ -1,6 +1,7 @@
 package com.geekster.InstagramProject.service;
 
 import com.geekster.InstagramProject.model.AuthenticationToken;
+import com.geekster.InstagramProject.model.User;
 import com.geekster.InstagramProject.repo.ITokenRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,5 +38,10 @@ public class TokenService {
         AuthenticationToken token1 = tokenRepo.findFirstByToken(token);
 
         tokenRepo.deleteById(token1.getTokenId());
+    }
+
+    public User findUserByToken(String token)
+    {
+        return tokenRepo.findFirstByToken(token).getUser();
     }
 }

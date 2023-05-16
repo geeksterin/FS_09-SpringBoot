@@ -4,15 +4,21 @@ import com.geekster.InstagramProject.dto.SignInInput;
 import com.geekster.InstagramProject.dto.SignInOutput;
 import com.geekster.InstagramProject.dto.SignUpOutput;
 import com.geekster.InstagramProject.model.AuthenticationToken;
+import com.geekster.InstagramProject.model.Post;
+import com.geekster.InstagramProject.model.PostLike;
 import com.geekster.InstagramProject.model.User;
+import com.geekster.InstagramProject.repo.IFollowerRepo;
 import com.geekster.InstagramProject.repo.ITokenRepo;
 import com.geekster.InstagramProject.repo.IUserRepo;
+import jakarta.transaction.Transactional;
 import jakarta.xml.bind.DatatypeConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,7 +29,19 @@ public class UserService {
     IUserRepo userRepo;
 
     @Autowired
+    PostService postService;
+
+    @Autowired
     ITokenRepo tokenRepo;
+
+    @Autowired
+    FollowingService followingService;
+
+    @Autowired
+    FollowerService followerService;
+
+    @Autowired
+    LikeService likeService;
 
     @Autowired TokenService tokenService;
     public SignUpOutput signUp(User signUpDto) {
@@ -157,4 +175,52 @@ public class UserService {
 
 
     }
+
+    @Transactional
+    public String followUser(Long myId, Long otherId) {
+
+        if(myId == otherId)
+        {
+            return "Cant follow yourself!!!!";
+        }
+       User myUser = userRepo.findByUserId(myId);
+       User otherUser = userRepo.findByUserId(otherId);
+
+        if(myUser!=null && otherUser!=null) {
+
+            //todo : check if already follows or not
+
+            //follow from my side
+            followingService.saveFollowing(myUser,otherUser);
+
+            //follower from other side
+            followerService.saveFollower(otherUser, myUser);
+
+            return "Followed Successfully!!!!!";
+        }
+        else
+        {
+            return "Users are invalid!!!";
+        }
+    }
+
+    public String toggleBlueTick(Long id, boolean blueTick) {
+        User user = userRepo.findByUserId(id);
+
+        if(user!=null) {
+           user.setBlueTicked(blueTick);
+           userRepo.save(user);
+            return "Blue tick was set to.." + blueTick;
+        }
+        else
+        {
+            return "user doesn't exist";
+        }
+
+    }
+
+    public void like(PostLike postLike) {
+        likeService.like(postLike);
+    }
+
 }

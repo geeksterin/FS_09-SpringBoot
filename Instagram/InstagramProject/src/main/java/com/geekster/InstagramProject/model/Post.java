@@ -31,9 +31,6 @@ public class Post {
     //add regex here
     private String location;
 
-    private Integer postLikes;
-
-
 
     @ManyToOne(fetch = FetchType.LAZY)// remove this ...not needed...why ??
     @JoinColumn(nullable = false , name = "fk_user_ID")

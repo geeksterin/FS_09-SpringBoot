@@ -21,7 +21,9 @@ public class Patient {
     private Long patientId;
     private String patientFirstName;
     private String patientLastName;
+    @Column(nullable = false, unique = true)
     private String patientEmail;
+    @Column(nullable = false)
     private String patientPassword;
     private String patientContact;
 

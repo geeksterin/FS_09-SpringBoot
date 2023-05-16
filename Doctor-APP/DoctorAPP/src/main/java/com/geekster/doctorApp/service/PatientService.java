@@ -35,10 +35,10 @@ public class PatientService {
     @Autowired
     DoctorService doctorService;
 
-    public SignUpOutput signUp(SignUpInput signUpDto) {
+    public SignUpOutput signUp(SignUpInput signUpDto) { // get the user details for sign up : signUpDto
 
         //check if user exists or not based on email
-        Patient patient = iPatientRepo.findFirstByPatientEmail(signUpDto.getUserEmail());
+        Patient patient = iPatientRepo.findFirstByPatientEmail(signUpDto.getUserEmail());//alternative : exist by true/false
 
         if(patient != null)
         {
@@ -49,7 +49,7 @@ public class PatientService {
         //encryption
         String encryptedPassword = null;
         try {
-            encryptedPassword = encryptPassword(signUpDto.getUserPassword());
+            encryptedPassword = encryptPassword(signUpDto.getUserPassword());//takes  a string and encrypts it...
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
 

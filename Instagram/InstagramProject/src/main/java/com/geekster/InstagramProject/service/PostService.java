@@ -16,6 +16,9 @@ public class PostService {
     IPostRepo postRepo;
 
     @Autowired
+    LikeService likeService;
+
+    @Autowired
     ITokenRepo tokenRepo;
     public void addPost(Post post) {
         postRepo.save(post);
@@ -31,4 +34,10 @@ public class PostService {
 
 
     }
+
+    public long getLikes(Long postId) {
+
+         return likeService.getLikes(postId);
+    }
+
 }
